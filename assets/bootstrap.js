@@ -16,7 +16,7 @@ function loadOne(urls){ return new Promise(function(res){ loadScript(urls, funct
 // with the library downloads below. By the time React mounts, the data is
 // usually already here, so the dashboard paints live numbers almost immediately
 // instead of waiting libraries-then-data in series.
-window.__PREFETCH_URL = "https://script.google.com/macros/s/AKfycbzvjLnyGSjx85b6YUDCZQkrvKUaIxzplO8xuqYK71oI2ekmZMc7slDKuJgQLsOTjkKp/exec";
+window.__PREFETCH_URL = "https://script.google.com/macros/s/AKfycbyj72Ks-_WekaDiTzLqjRkGlq0wYg5t4plhDt2HjJMHY_j92UCdrczmis57LIKAJQRbRg/exec";
 window.__prefetch = (function(){
   try {
     if (!window.__PREFETCH_URL) return null;
