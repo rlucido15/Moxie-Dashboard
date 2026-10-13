@@ -121,7 +121,7 @@ window.__libsReady.then(function(){
   const DEFAULT_REFRESH_MIN = 15;
   // Live data feed (Apps Script web app /exec URL). Baked in so the dashboard
   // connects automatically on load. Can still be overridden in the gear panel.
-  const DEFAULT_SCRIPT_URL = "https://script.google.com/macros/s/AKfycbzvjLnyGSjx85b6YUDCZQkrvKUaIxzplO8xuqYK71oI2ekmZMc7slDKuJgQLsOTjkKp/exec";
+  const DEFAULT_SCRIPT_URL = "https://script.google.com/macros/s/AKfycbyj72Ks-_WekaDiTzLqjRkGlq0wYg5t4plhDt2HjJMHY_j92UCdrczmis57LIKAJQRbRg/exec";
   // AInsight: shared Claude Project URL the assistant tab links out to.
   // Paste your Project's share link here once it's created. Leave blank to show
   // a "coming soon" state instead of a broken link.
