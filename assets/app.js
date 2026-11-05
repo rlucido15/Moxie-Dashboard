@@ -2091,16 +2091,15 @@ window.__libsReady.then(function(){
     Object.keys(OFFICER_NAMES).forEach((k) => delete OFFICER_NAMES[k]);
     Object.keys(officerEmails || {}).forEach((k) => { OFFICER_NAMES[k] = k.replace(/\b\w/g, (c) => c.toUpperCase()); });
     (team || []).forEach((t) => { const k = teamKey(t); if (k) OFFICER_NAMES[k] = teamName(t); });
-    // Mirror headshots into the module store so every Avatar sees them. The team
-    // roster is the single headshot source: each member's photo URL is published
-    // under their name key. (Runs after team is declared to avoid a TDZ error.)
-    useEffect(() => {
-      Object.keys(PHOTOS).forEach((k) => delete PHOTOS[k]);
-      (team || []).forEach((t) => {
-        const k = ((t.firstName || "") + " " + (t.lastName || "")).trim().toLowerCase();
-        if (k && t.photo) PHOTOS[k] = t.photo;
-      });
-    }, [team]);
+    // Mirror headshots into the module store so every Avatar sees them, populated
+    // SYNCHRONOUSLY during render (like OFFICER_NAMES/HIDDEN_OFFICERS above) so the
+    // very first paint already has photos. Doing this in a useEffect instead left
+    // avatars blank until the next re-render (a click), so it must stay inline.
+    Object.keys(PHOTOS).forEach((k) => delete PHOTOS[k]);
+    (team || []).forEach((t) => {
+      const k = teamKey(t);
+      if (k && t.photo) PHOTOS[k] = t.photo;
+    });
     const [weights, setWeights] = useState({ vol: 10, units: 25, reviews: 15, bps: 0.5 });
     // Monthly sales competition. metric is one of the LB metrics or a custom
     // category. customCats lets admin define extra named metrics via a prompt.
